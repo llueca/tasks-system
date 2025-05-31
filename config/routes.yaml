@@ -1,0 +1,25 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+home_page:
+    path: /
+    controller: App\Tasks\Infrastructure\Controllers\CreateTaskController::index
+    methods: GET
+
+create_task:
+    path: /tasks/{task_id}
+    controller: App\Tasks\Infrastructure\Controllers\CreateTaskController::create
+    methods: PUT
+
+register_user:
+    path: /users/{id}/register
+    controller: App\Users\Infrastructure\Controllers\RegisterUserController::register
+    methods: PUT
+
+verify_user:
+    path: /users/{id}/verify
+    controller: App\Users\Infrastructure\Controllers\VerifyUserController::verify
+    methods: POST
