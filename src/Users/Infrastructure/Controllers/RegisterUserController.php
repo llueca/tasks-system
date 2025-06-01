@@ -2,13 +2,13 @@
 
 namespace App\Users\Infrastructure\Controllers;
 
+use App\Shared\Security\EmailVerifier;
 use App\Users\Application\UseCases\RegisterUser;
 use App\Users\Domain\Entities\User;
 use App\Users\Infrastructure\Requests\RegisterUserRequest;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
-use App\Security\EmailVerifier;
 
 class RegisterUserController extends AbstractController
 {

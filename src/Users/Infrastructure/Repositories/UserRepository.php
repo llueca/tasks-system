@@ -2,6 +2,7 @@
 
 namespace App\Users\Infrastructure\Repositories;
 
+use App\Users\Domain\ValueObjects\EmailAddress;
 use App\Users\Domain\ValueObjects\UserId;
 use App\Users\Infrastructure\Entities\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -38,5 +39,15 @@ class UserRepository extends ServiceEntityRepository implements \App\Users\Domai
             ->getOneOrNullResult()
             ?->toDomain()
         ;
+    }
+
+    public function getByEmail(EmailAddress $emailAddress): \App\Users\Domain\Entities\User
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.email = :emailAddress')
+            ->setParameter('emailAddress', (string) $emailAddress)
+            ->getQuery()
+            ->getResult()
+            ->toDomain();
     }
 }
